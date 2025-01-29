@@ -161,3 +161,6 @@ function App() {
 }
 
 export default App;
+
+// In your Routes component
+<Route path="/analytics" element={<Analytics />} />
