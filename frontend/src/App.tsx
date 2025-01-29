@@ -75,3 +75,29 @@ function App() {
 }
 
 export default App;
+
+import { AppProvider } from './context/AppContext';
+import Notifications from './components/Notifications';
+
+function App() {
+  return (
+    <AppProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <Layout>
+            <Notifications />
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/influencers" element={<InfluencerList />} />
+              <Route path="/review" element={<ContentReview />} />
+              <Route path="/analytics" element={<div>Analytics Coming Soon</div>} />
+            </Routes>
+          </Layout>
+        </Router>
+      </ThemeProvider>
+    </AppProvider>
+  );
+}
+
+export default App;
