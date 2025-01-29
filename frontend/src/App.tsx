@@ -140,3 +140,24 @@ function App() {
 }
 
 export default App;
+
+import ErrorBoundary from './components/ErrorBoundary';
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <AuthProvider>
+        <AppProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Router>
+              {/* ... rest of your routes ... */}
+            </Router>
+          </ThemeProvider>
+        </AppProvider>
+      </AuthProvider>
+    </ErrorBoundary>
+  );
+}
+
+export default App;
