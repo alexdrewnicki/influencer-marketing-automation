@@ -101,3 +101,42 @@ function App() {
 }
 
 export default App;
+
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './components/Login';
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Router>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/*"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Notifications />
+                      <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/influencers" element={<InfluencerList />} />
+                        <Route path="/review" element={<ContentReview />} />
+                        <Route path="/analytics" element={<div>Analytics Coming Soon</div>} />
+                      </Routes>
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </Router>
+        </ThemeProvider>
+      </AppProvider>
+    </AuthProvider>
+  );
+}
+
+export default App;
