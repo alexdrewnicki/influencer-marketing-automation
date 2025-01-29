@@ -90,3 +90,90 @@ useEffect(() => {
               </CardContent>
             </Card>
           </Grid>
+
+          <Grid item xs={12} md={3}>
+            <Card>
+              <CardContent>
+                <Typography color="textSecondary" gutterBottom>
+                  Signed Contracts
+                </Typography>
+                <Typography variant="h4">
+                  {stats.signedContracts}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={3}>
+            <Card>
+              <CardContent>
+                <Typography color="textSecondary" gutterBottom>
+                  Pending Signatures
+                </Typography>
+                <Typography variant="h4">
+                  {stats.pendingContracts}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={3}>
+            <Card>
+              <CardContent>
+                <Typography color="textSecondary" gutterBottom>
+                  Avg. Signing Time
+                </Typography>
+                <Typography variant="h4">
+                  {stats.averageSigningTime}h
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Charts */}
+          <Grid item xs={12} md={8}>
+            <Box sx={{ height: 400 }}>
+              <ResponsiveContainer>
+                <BarChart data={stats.monthlyTrends}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="sent" fill="#8884d8" name="Contracts Sent" />
+                  <Bar dataKey="signed" fill="#82ca9d" name="Contracts Signed" />
+                </BarChart>
+              </ResponsiveContainer>
+            </Box>
+          </Grid>
+
+          <Grid item xs={12} md={4}>
+            <Box sx={{ height: 400 }}>
+              <ResponsiveContainer>
+                <PieChart>
+                  <Pie
+                    data={stats.statusDistribution}
+                    dataKey="value"
+                    nameKey="name"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={120}
+                    label
+                  >
+                    {stats.statusDistribution.map((_, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </Box>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default ContractAnalytics;
