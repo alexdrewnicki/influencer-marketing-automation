@@ -23,7 +23,7 @@
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "css-loader": "^6.8.1",
-    "postcss-loader": "^7.3.3",
+    "postcss-loader": "^8.1.1",
     "ts-loader": "^9.4.4",
     "terser-webpack-plugin": "^5.3.9",
     "@testing-library/jest-dom": "^5.16.5",
